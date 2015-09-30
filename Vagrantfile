@@ -20,6 +20,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder projectPath, "/projects"
   config.vm.provider "virtualbox"
 
+
   config.vm.provision "shell", path: "./scripts/provision.sh"
   config.vm.provision "shell", path: "./scripts/startup.sh", run: "always"
 end

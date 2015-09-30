@@ -3,12 +3,13 @@ export DEBIAN_FRONTEND=noninteractive
 echo mysql-server mysql-server/root_password password 123 | debconf-set-selections
 echo mysql-server mysql-server/root_password_again password 123 | debconf-set-selections
 
-#curl -sL https://deb.nodesource.com/setup_0.12 | bash -
+curl -sL https://deb.nodesource.com/setup_4.x | bash -
 
 #apt-get update
 
 # Prereqs
 apt-get install -y openjdk-7-jre
+apt-get install -y build-essential g++
 
 apt-get install -y nginx
 apt-get install -y nodejs
