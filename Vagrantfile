@@ -1,7 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-projectPath = "C:/programming"
+# Fixing path for cygwin.
+# mount -c /
+# mount -m > /etc/fstab
+projectPath = "c:/programming"
 
 Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
@@ -17,8 +20,13 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
   # config.vm.network "private_network", ip: "192.168.33.10"
-  config.vm.synced_folder projectPath, "/projects"
-  config.vm.provider "virtualbox"
+  config.vm.synced_folder projectPath, "/projects", type: "rsync",
+    rsync__args: ["--verbose", "--archive"]
+
+  config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--memory", 2048]
+    v.customize ["modifyvm", :id, "--cpus", 4]
+  end
 
 
   config.vm.provision "shell", path: "./scripts/provision.sh"
