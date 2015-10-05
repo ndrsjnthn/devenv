@@ -30,6 +30,7 @@ cp /vagrant/files/nginx_devenv.com /etc/nginx/sites-enabled/nginx_devenv.com
 
 # Setting up mariadb.
 mysql -u root --password=123 -e "GRANT ALL privileges ON *.* TO 'root'@'%'"
+mysql -u root --password=123 -e "SET PASSWORD FOR root@'%'=PASSWORD('');"
 sed -i 's/bind-address/#bind-address/g' /etc/mysql/my.cnf
 systemctl restart mysql.service
 
