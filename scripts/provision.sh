@@ -18,9 +18,8 @@ apt-get install -y git
 apt-get install -y screen
 
 # Databases
-# apt-get install -y redis-server
 apt-get install -y -q mariadb-server
-apt-get install -y redis
+apt-get install -y redis-server
 # apt-get install -y mongodb
 # apt-get install -y rabbitmq-server
 
