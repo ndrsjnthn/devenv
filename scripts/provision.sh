@@ -10,6 +10,7 @@ curl -sL https://deb.nodesource.com/setup_4.x | bash -
 # Prereqs
 apt-get install -y openjdk-7-jre
 apt-get install -y build-essential g++
+apt-get install -y ruby
 
 apt-get install -y nginx
 apt-get install -y nodejs
@@ -19,9 +20,11 @@ apt-get install -y screen
 # Databases
 # apt-get install -y redis-server
 apt-get install -y -q mariadb-server
+apt-get install -y redis
 # apt-get install -y mongodb
 # apt-get install -y rabbitmq-server
 
+gem install sass
 cp /vagrant/files/.bashrc ~/.bashrc
 cp /vagrant/files/.bashrc /home/vagrant/.bashrc
 
@@ -31,6 +34,8 @@ cp /vagrant/files/nginx_devenv.com /etc/nginx/sites-enabled/nginx_devenv.com
 # Setting up mariadb.
 mysql -u root --password=123 -e "GRANT ALL privileges ON *.* TO 'root'@'%'"
 mysql -u root --password=123 -e "SET PASSWORD FOR root@'%'=PASSWORD('');"
+mysql -u root --password=123 -e "SET PASSWORD FOR root@'localhost'=PASSWORD('');"
+
 sed -i 's/bind-address/#bind-address/g' /etc/mysql/my.cnf
 systemctl restart mysql.service
 

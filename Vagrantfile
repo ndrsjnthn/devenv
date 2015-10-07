@@ -18,6 +18,10 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 9200, host: 9200
   config.vm.network "forwarded_port", guest: 5601, host: 5601
   config.vm.network "forwarded_port", guest: 3306, host: 3306
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 3001, host: 3001
+  config.vm.network "forwarded_port", guest: 9999, host: 9999
+  config.vm.network "forwarded_port", guest: 6379, host: 6379
 
   # config.vm.network "private_network", ip: "192.168.33.10"
   config.vm.synced_folder projectPath, "/projects", type: "rsync",
