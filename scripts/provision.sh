@@ -46,6 +46,8 @@ mkdir /home/vagrant/kibana
 tar -xf elasticsearch-1.7.2.tar.gz -C /home/vagrant/elasticsearch --strip-components=1
 tar -xf kibana-4.1.2-linux-x64.tar.gz -C /home/vagrant/kibana --strip-components=1
 
+chown -R vagrant:vagrant /home/vagrant
+
 npm i -g npm
 npm i -g gulp
 npm i -g nodemon
