@@ -13,6 +13,7 @@ Vagrant.configure(2) do |config|
 
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "debian/jessie64"
+  # config.vm.network "private_network", type: "dhcp"
 
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 9200, host: 9200
@@ -24,6 +25,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 6379, host: 6379
   config.vm.network "forwarded_port", guest: 27539, host: 27539
   config.vm.network "forwarded_port", guest: 28634, host: 28634
+  config.vm.network "forwarded_port", guest: 24333, host: 24333
 
   # config.vm.network "private_network", ip: "192.168.33.10"
   config.vm.synced_folder projectPath, "/projects", type: "rsync",
